@@ -37,22 +37,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btAdicionar"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Adicionar Produto"/>
+        android:weightSum="99"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btListar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Listar Produto"/>
+        <Button
+            android:id="@+id/btAdicionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="33"
+            android:text="Adicionar Produto"/>
 
-    <Button
-        android:id="@+id/btIniciar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Iniciar"/>
+        <Button
+            android:id="@+id/btListar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="33"
+            android:text="Listar Produto"/>
+
+        <Button
+            android:id="@+id/btIniciar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="33"
+            android:text="Iniciar"/>
+    </LinearLayout>
 
 </LinearLayout>
