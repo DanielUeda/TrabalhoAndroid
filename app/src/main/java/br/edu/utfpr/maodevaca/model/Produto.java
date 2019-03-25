@@ -10,7 +10,7 @@ public class Produto implements Serializable {
 
     @DatabaseField(generatedId = true, allowGeneratedIdInsert = true)
     private Integer _id;
-    @DatabaseField()
+    @DatabaseField
     private String descricao;
     @DatabaseField
     private double quantidade;
@@ -43,6 +43,7 @@ public class Produto implements Serializable {
 
     public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
+        calcularValorPorUnidade();
     }
 
     public double getValor() {
@@ -51,18 +52,15 @@ public class Produto implements Serializable {
 
     public void setValor(double valor) {
         this.valor = valor;
+        calcularValorPorUnidade();
     }
 
-    public double getValorPorUnidade() {
-        return valorPorUnidade;
-    }
-
-    public void setValorPorUnidade(double valorPorUnidade) {
-        this.valorPorUnidade = valorPorUnidade;
+    private void calcularValorPorUnidade(){
+        valorPorUnidade = Math.round( valor / quantidade );
     }
 
     @Override
     public String toString() {
-        return this.descricao;
+        return this._id + " - " + this.descricao;
     }
 }
