@@ -48,24 +48,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="33"
-            android:text="Adicionar Produto"
-            android:onClick="btAddProdutoOnClick"/>
+            android:text="Adicionar Produto"/>
 
         <Button
             android:id="@+id/btListar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="33"
-            android:text="Listar Produto"
-            android:onClick="btListarOnClick"/>
+            android:text="Listar Produto"/>
 
         <Button
             android:id="@+id/btIniciar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="33"
-            android:text="Iniciar"
-            android:onClick="btIniciarOnClick"/>
+            android:text="Iniciar"/>
     </LinearLayout>
 
 </LinearLayout>

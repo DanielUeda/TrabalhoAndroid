@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ListarActivity">
 
-
     <ListView
         android:id="@+id/lvProdutos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:layout_height="wrap_content"
+        android:id="@+id/btMaisBarato"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textFontWeight="25dp"
         android:layout_alignParentBottom="true"
-        android:onClick="btCalcularOnClick"
         android:text="O mais barato" />
 
 </RelativeLayout>
