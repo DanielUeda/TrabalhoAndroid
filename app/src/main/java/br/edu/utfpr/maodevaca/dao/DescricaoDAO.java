@@ -13,7 +13,7 @@ public class DescricaoDAO extends GenericDAO<Descricao> {
     }
 
     @Override
-    public boolean insert(Descricao obj) {
+    public boolean insert(Descricao obj) throws Exception {
         String descricaoUpper = obj.getDescricao().toUpperCase();
         obj.setDescricao(descricaoUpper);
         if (findByDescricao(descricaoUpper) == null) {

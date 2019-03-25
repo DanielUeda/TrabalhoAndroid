@@ -19,7 +19,8 @@ public class ProdutoDAO extends GenericDAO<Produto> {
     }
 
     @Override
-    public boolean insert(Produto obj) {
+    public boolean insert(Produto obj) throws Exception {
+        obj.setDescricao(obj.getDescricao().toUpperCase());
         DescricaoDAO descricaoDAO = new DescricaoDAO(context);
         descricaoDAO.insert(new Descricao(obj.getDescricao()));
         return super.insert(obj);

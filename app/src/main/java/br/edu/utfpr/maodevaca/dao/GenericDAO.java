@@ -22,12 +22,11 @@ public class GenericDAO<E> extends DatabaseHelper {
         }
     }
 
-    public boolean insert(E obj) {
+    public boolean insert(E obj) throws Exception {
         try {
             return dao.create(obj) > 0;
         } catch (Exception ex){
-            ex.printStackTrace();
-            return false;
+            throw new Exception("Erro inserindo registro: " + ex.getMessage());
         }
     }
 
