@@ -11,7 +11,7 @@ import br.edu.utfpr.maodevaca.helper.DatabaseHelper;
 
 public class GenericDAO<E> extends DatabaseHelper {
 
-    protected Dao<E, Integer> dao;
+    private Dao<E, Integer> dao;
 
     public GenericDAO(Context context, Class<E> type) {
         super(context);
@@ -20,6 +20,10 @@ public class GenericDAO<E> extends DatabaseHelper {
         } catch (Exception ex){
             ex.printStackTrace();
         }
+    }
+
+    public Dao getDao(){
+        return dao;
     }
 
     public boolean insert(E obj) throws Exception {
