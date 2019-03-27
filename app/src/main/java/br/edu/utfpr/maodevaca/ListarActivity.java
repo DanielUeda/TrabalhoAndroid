@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.j256.ormlite.dao.GenericRawResults;
+
 import java.util.List;
 
 import br.edu.utfpr.maodevaca.dao.ProdutoDAO;
@@ -51,10 +53,11 @@ public class ListarActivity extends AppCompatActivity {
     }
 
     private void calcularOMaisBarato() {
-        //todo exibir o menor preço
+        ProdutoDAO dao = new ProdutoDAO(this);
 
+        String[] result = dao.retornaMaisBarato();
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("O mais barato");
+        alert.setTitle("O produto mais barato é " + result[1].toString() + " que custa R$" + result[0].toString() + " por unidade.");
         alert.setNeutralButton("OK",null);
 
         alert.show();

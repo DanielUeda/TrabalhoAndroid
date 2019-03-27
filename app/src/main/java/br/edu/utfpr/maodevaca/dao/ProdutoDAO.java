@@ -2,6 +2,9 @@ package br.edu.utfpr.maodevaca.dao;
 
 import android.content.Context;
 
+import com.j256.ormlite.dao.GenericRawResults;
+import com.j256.ormlite.stmt.QueryBuilder;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -36,5 +39,20 @@ public class ProdutoDAO {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    public String[] retornaMaisBarato(){
+        String[] value = null;
+        GenericRawResults results = null;
+        try{
+            QueryBuilder qb = dao.getDao().queryBuilder();
+            qb.selectRaw("MIN(valorPorUnidade)","descricao");
+            results = dao.getDao().queryRaw(qb.prepareStatementString());
+            value = (String[]) results.getFirstResult();
+            return value;
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return value;
     }
 }
