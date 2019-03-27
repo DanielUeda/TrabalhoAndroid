@@ -4,6 +4,8 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @DatabaseTable(tableName = "produto")
 public class Produto implements Serializable {
@@ -55,8 +57,18 @@ public class Produto implements Serializable {
         calcularValorPorUnidade();
     }
 
+    public double getValorPorUnidade() {
+        return valorPorUnidade;
+    }
+
+    public void setValorPorUnidade(double valorPorUnidade){
+        this.valorPorUnidade = valorPorUnidade;
+    }
+
     private void calcularValorPorUnidade(){
-        valorPorUnidade = Math.round( valor / quantidade );
+        valorPorUnidade = new BigDecimal(valor / quantidade)
+                .setScale(2, RoundingMode.HALF_EVEN)
+                .doubleValue();
     }
 
     @Override

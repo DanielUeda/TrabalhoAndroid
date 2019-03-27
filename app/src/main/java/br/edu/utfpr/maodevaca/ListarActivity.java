@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.j256.ormlite.dao.GenericRawResults;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import br.edu.utfpr.maodevaca.dao.ProdutoDAO;
@@ -53,16 +54,18 @@ public class ListarActivity extends AppCompatActivity {
     }
 
     private void calcularOMaisBarato() {
-        ProdutoDAO dao = new ProdutoDAO(this);
-
-        String[] result = dao.retornaMaisBarato();
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("O produto mais barato é " + result[1].toString() + " que custa R$" + result[0].toString() + " por unidade.");
-        alert.setNeutralButton("OK",null);
-
-        alert.show();
-
-        //Toast.makeText(this,"O menor preço é:",Toast.LENGTH_LONG).show();
-
+        try {
+            Produto produtoMaisBarato = new ProdutoDAO(this).retornaMaisBarato();
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setCancelable(false);
+            alert.setTitle("Produto mais barato");
+            alert.setMessage("O produto mais barato é " + produtoMaisBarato.getDescricao() +
+                    ", que custa R$" + new DecimalFormat("0.00").format(produtoMaisBarato.getValorPorUnidade())
+                    + " por unidade.");
+            alert.setNeutralButton("OK",null);
+            alert.show();
+        } catch (Exception ex){
+            Toast.makeText(this, "Erro ao consultar o produto mais barato: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 }
